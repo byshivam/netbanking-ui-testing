@@ -17,9 +17,9 @@ The app is built in this repo (plain HTML/JS + a small Node server, no framework
 ## Results
 
 <!-- RESULTS:START -->
-_Last run: 2026-10-08 14:55 UTC_
+_Last run: 2026-10-08 15:36 UTC_
 
-**Clean build:** 324/325 test runs pass across 5 browser projects (chromium, firefox, webkit, mobile-chrome, mobile-safari); 3 skipped by design.  
+**Clean build:** 325/325 test runs pass across 5 browser projects (chromium, firefox, webkit, mobile-chrome, mobile-safari); 3 skipped by design.  
 **Planted UI bugs caught:** 9/9.  
 **Release candidate with every bug on:** 105 of 325 tests fail.  
 
@@ -29,7 +29,7 @@ _Last run: 2026-10-08 14:55 UTC_
 | UI-02 | Login error text fails contrast | ✅ caught | Accessibility | chromium, firefox, mobile-chrome | 3 |
 | UI-03 | Paise dropped from the amount | ✅ caught | Accessibility, E2E | chromium, firefox, mobile-chrome | 8 |
 | UI-04 | Mobile layout overflow | ✅ caught | Visual, Responsive, E2E | mobile-chrome | 4 |
-| UI-05 | Double submit on Confirm | ✅ caught | Network, E2E | chromium, firefox, mobile-chrome | 8 |
+| UI-05 | Double submit on Confirm | ✅ caught | Network, E2E | chromium, firefox, mobile-chrome | 9 |
 | UI-06 | Failed transfer shown as success | ✅ caught | Network, E2E | chromium, firefox, mobile-chrome | 12 |
 | UI-07 | Beneficiary form has no labels | ✅ caught | Accessibility, E2E | chromium, firefox, mobile-chrome | 12 |
 | UI-08 | Logout keeps the session | ✅ caught | E2E | chromium, firefox, mobile-chrome | 3 |
@@ -66,7 +66,7 @@ _Last run: 2026-10-08 14:55 UTC_
 
 **UI-05 — Double submit on Confirm.** Confirm stays enabled and each click sends a new request: a double tap pays twice.
 
-- `E2E` Send money › double-clicking Confirm sends the money once _(chromium, mobile-chrome)_
+- `E2E` Send money › double-clicking Confirm sends the money once _(chromium, firefox, mobile-chrome)_
 - `E2E` Send money › Confirm is disabled while the transfer is being sent _(chromium, firefox, mobile-chrome)_
 - `Network` Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once _(chromium, firefox, mobile-chrome)_
 

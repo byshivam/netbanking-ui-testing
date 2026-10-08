@@ -1,18 +1,14 @@
 [
   {
     "run": "clean",
-    "exitCode": 1,
-    "durationS": 150.2,
+    "exitCode": 0,
+    "durationS": 101.4,
     "total": 328,
-    "passed": 324,
+    "passed": 325,
     "skipped": 3,
-    "failed": 1,
-    "failedLayers": [
-      "E2E"
-    ],
-    "failedProjects": [
-      "mobile-safari"
-    ],
+    "failed": 0,
+    "failedLayers": [],
+    "failedProjects": [],
     "projects": [
       "chromium",
       "firefox",
@@ -20,23 +16,13 @@
       "mobile-chrome",
       "mobile-safari"
     ],
-    "failedTests": [
-      {
-        "title": "Send money › double-clicking Confirm sends the money once",
-        "name": "double-clicking Confirm sends the money once",
-        "file": "e2e/transfer.spec.ts",
-        "layer": "E2E",
-        "project": "mobile-safari",
-        "status": "failed",
-        "error": "Error: expect(locator).toBeVisible() failed"
-      }
-    ],
-    "verdict": "FALSE ALARM"
+    "failedTests": [],
+    "verdict": "PASS"
   },
   {
     "run": "UI-01",
     "exitCode": 1,
-    "durationS": 141.2,
+    "durationS": 113.4,
     "total": 200,
     "passed": 169,
     "skipped": 1,
@@ -155,7 +141,7 @@
         "layer": "E2E",
         "project": "chromium",
         "status": "failed",
-        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+        "error": "TimeoutError: locator.evaluate: Timeout 10000ms exceeded."
       },
       {
         "title": "Send money › Confirm is disabled while the transfer is being sent",
@@ -191,7 +177,7 @@
         "layer": "E2E",
         "project": "firefox",
         "status": "failed",
-        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+        "error": "TimeoutError: locator.evaluate: Timeout 10000ms exceeded."
       },
       {
         "title": "Send money › Confirm is disabled while the transfer is being sent",
@@ -227,7 +213,7 @@
         "layer": "E2E",
         "project": "mobile-chrome",
         "status": "failed",
-        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+        "error": "TimeoutError: locator.evaluate: Timeout 10000ms exceeded."
       },
       {
         "title": "Send money › Confirm is disabled while the transfer is being sent",
@@ -334,7 +320,7 @@
   {
     "run": "UI-02",
     "exitCode": 1,
-    "durationS": 79.1,
+    "durationS": 51.3,
     "total": 200,
     "passed": 196,
     "skipped": 1,
@@ -386,7 +372,7 @@
   {
     "run": "UI-03",
     "exitCode": 1,
-    "durationS": 84,
+    "durationS": 57.5,
     "total": 200,
     "passed": 191,
     "skipped": 1,
@@ -484,7 +470,7 @@
   {
     "run": "UI-04",
     "exitCode": 1,
-    "durationS": 75.3,
+    "durationS": 52.2,
     "total": 200,
     "passed": 195,
     "skipped": 1,
@@ -545,11 +531,11 @@
   {
     "run": "UI-05",
     "exitCode": 1,
-    "durationS": 75.8,
+    "durationS": 54.1,
     "total": 200,
-    "passed": 191,
+    "passed": 190,
     "skipped": 1,
-    "failed": 8,
+    "failed": 9,
     "failedLayers": [
       "Network",
       "E2E"
@@ -582,6 +568,15 @@
         "project": "chromium",
         "status": "failed",
         "error": "Error: expect(locator).toBeDisabled() failed"
+      },
+      {
+        "title": "Send money › double-clicking Confirm sends the money once",
+        "name": "double-clicking Confirm sends the money once",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(received).toHaveLength(expected)"
       },
       {
         "title": "Send money › Confirm is disabled while the transfer is being sent",
@@ -643,7 +638,7 @@
   {
     "run": "UI-06",
     "exitCode": 1,
-    "durationS": 93.8,
+    "durationS": 69.4,
     "total": 200,
     "passed": 187,
     "skipped": 1,
@@ -777,7 +772,7 @@
   {
     "run": "UI-07",
     "exitCode": 1,
-    "durationS": 92.9,
+    "durationS": 66.8,
     "total": 200,
     "passed": 187,
     "skipped": 1,
@@ -911,7 +906,7 @@
   {
     "run": "UI-08",
     "exitCode": 1,
-    "durationS": 75.7,
+    "durationS": 52.5,
     "total": 200,
     "passed": 196,
     "skipped": 1,
@@ -963,7 +958,7 @@
   {
     "run": "UI-09",
     "exitCode": 1,
-    "durationS": 86.5,
+    "durationS": 60.7,
     "total": 200,
     "passed": 191,
     "skipped": 1,
@@ -1060,7 +1055,7 @@
   {
     "run": "all",
     "exitCode": 1,
-    "durationS": 305.1,
+    "durationS": 247.3,
     "total": 328,
     "passed": 220,
     "skipped": 3,
@@ -1661,7 +1656,7 @@
         "layer": "E2E",
         "project": "chromium",
         "status": "failed",
-        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+        "error": "TimeoutError: locator.evaluate: Timeout 10000ms exceeded."
       },
       {
         "title": "Send money › Confirm is disabled while the transfer is being sent",
@@ -1697,7 +1692,7 @@
         "layer": "E2E",
         "project": "firefox",
         "status": "failed",
-        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+        "error": "TimeoutError: locator.evaluate: Timeout 10000ms exceeded."
       },
       {
         "title": "Send money › Confirm is disabled while the transfer is being sent",
@@ -1733,7 +1728,7 @@
         "layer": "E2E",
         "project": "webkit",
         "status": "failed",
-        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+        "error": "TimeoutError: locator.evaluate: Timeout 10000ms exceeded."
       },
       {
         "title": "Send money › Confirm is disabled while the transfer is being sent",
@@ -1769,7 +1764,7 @@
         "layer": "E2E",
         "project": "mobile-chrome",
         "status": "failed",
-        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+        "error": "TimeoutError: locator.evaluate: Timeout 10000ms exceeded."
       },
       {
         "title": "Send money › Confirm is disabled while the transfer is being sent",
@@ -1805,7 +1800,7 @@
         "layer": "E2E",
         "project": "mobile-safari",
         "status": "failed",
-        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+        "error": "TimeoutError: locator.evaluate: Timeout 10000ms exceeded."
       },
       {
         "title": "Send money › Confirm is disabled while the transfer is being sent",
