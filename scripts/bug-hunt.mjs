@@ -58,6 +58,7 @@ function runOnce(run, port) {
   const env = {
     ...process.env, UI_BUGS: run === "clean" ? "none" : run, PORT: String(port),
     PW_JSON_FILE: json, PW_HTML_DIR: `${ROOT}work/report-${run}`,
+    PW_ALLURE_DIR: `${ROOT}work/allure-${run}`, PW_OUTPUT_DIR: `${ROOT}work/output-${run}`,
   };
   const started = Date.now();
   const list = run === "clean" || run === "all" ? projects : bugProjects.length ? bugProjects : projects;

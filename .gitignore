@@ -5,3 +5,5 @@ blob-report/
 work/
 site/
 commit.log
+allure-results/
+allure-report/

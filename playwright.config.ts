@@ -14,7 +14,19 @@ export default defineConfig({
     ["list"],
     ["html", { open: "never", outputFolder: process.env.PW_HTML_DIR || "playwright-report" }],
     ["json", { outputFile: process.env.PW_JSON_FILE || "test-results/results.json" }],
+    [
+      "allure-playwright",
+      {
+        resultsDir: process.env.PW_ALLURE_DIR || "allure-results",
+        environmentInfo: {
+          app: "Arya Bank NetBanking (fictional)",
+          planted_bugs: process.env.UI_BUGS || "none",
+          node: process.version,
+        },
+      },
+    ],
   ],
+  outputDir: process.env.PW_OUTPUT_DIR || "test-results",
   // Baselines are created once in CI (Playwright Docker image, see the workflow) and committed;
   // a missing or changed screenshot then fails the test.
   updateSnapshots: "none",
