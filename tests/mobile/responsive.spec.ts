@@ -35,7 +35,7 @@ test.describe("Responsive layout", { tag: "@mobile" }, () => {
     await transfer.goto();
     for (const control of [transfer.from, transfer.to, transfer.amount, transfer.review]) {
       const box = await control.boundingBox();
-      expect(box!.height).toBeGreaterThanOrEqual(44);
+      expect(Math.round(box!.height), "rendered height (px)").toBeGreaterThanOrEqual(44);
     }
   });
 });

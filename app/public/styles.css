@@ -59,7 +59,7 @@ main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 64px; }
 /* forms */
 form .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
 label { font-weight: 600; font-size: .95rem; }
-input, select { font: inherit; min-height: 44px; padding: 8px 12px; border: 1px solid #8a969f; border-radius: 8px; background: #fff; color: var(--ink); width: 100%; }
+input, select { font: inherit; height: 44px; min-height: 44px; padding: 8px 12px; border: 1px solid #8a969f; border-radius: 8px; background: #fff; color: var(--ink); width: 100%; }
 input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--danger); }
 .hint { color: var(--muted); font-size: .875rem; }
 .field-error { color: var(--danger); font-size: .875rem; margin: 0; }
