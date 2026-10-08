@@ -119,6 +119,19 @@ The server stamps active bugs on `<html data-bugs="...">` (`UI_BUGS=UI-03,UI-05`
 
 UI-09 is the reason the suite runs on more than one browser: it passes every Chromium test.
 
+## Reporting
+
+The nightly run publishes everything to GitHub Pages:
+
+| Page | What it shows |
+|---|---|
+| **Results** | Bug matrix: which tests caught each planted bug, in which browsers |
+| **Allure report (clean app)** | Every test with steps, screenshots, traces and axe output, grouped by layer; **history trend** of pass rate and duration across nightly runs (kept in `reports/allure-history.jsonl`) |
+| **Allure report (every bug on)** | The same suite against a release candidate with all nine defects |
+| **Accessibility** | Every axe scan by screen and browser: zero violations on the clean app, and the rules each planted bug breaks |
+| **Visual diffs** | Baseline, actual and pixel-diff images for every screenshot a planted bug changed |
+| **Playwright reports** | Native HTML reports with trace viewer for the clean and all-bugs runs |
+
 ## A real bug the suite found
 
 The first mobile run failed axe's `scrollable-region-focusable` rule on the dashboard and statement: the transaction tables scroll sideways on a phone, but a keyboard user couldn't reach that scroll area. It wasn't a planted bug. The fix (`tabindex="0"`, `role="region"` and a label on the table wrapper) is in the app now.
@@ -139,7 +152,8 @@ tests/
   mobile/               overflow and tap-target checks
   network/              mocked failures, slowness and retries
 scripts/bug-hunt.mjs    clean + per-bug runs, README results
-scripts/build-site.mjs  dashboard for GitHub Pages
+scripts/build-site.mjs  Pages site: results, Allure, accessibility, visual diffs
+allurerc.mjs            Allure 3 settings (history file, report name)
 ```
 
 ## Run it locally
