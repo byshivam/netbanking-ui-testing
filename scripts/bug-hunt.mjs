@@ -152,6 +152,21 @@ if (args.includes("--update-readme") && existsSync(README)) {
 }
 if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## UI bug hunt\n\n${block}\n`);
 
+// In GitHub Actions, surface what went wrong as annotations on the run page.
+if (process.env.GITHUB_ACTIONS) {
+  for (const r of results) {
+    if (r.verdict === "FALSE ALARM") {
+      for (const t of r.failedTests.slice(0, 10)) {
+        console.log(`::error title=clean app failure (${t.project})::${t.title} — ${t.error}`);
+      }
+    } else if (r.verdict === "ESCAPED") {
+      console.log(`::error title=${r.run} escaped::No test failed with ${r.run} switched on.`);
+    } else if (r.verdict === "ERROR") {
+      console.log(`::error title=${r.run} run error::No test results were produced; see work/${r.run}.log.`);
+    }
+  }
+}
+
 const bad = results.filter((r) => ["ERROR", "FALSE ALARM", "ESCAPED"].includes(r.verdict)).map((r) => r.run);
 if (bad.length) {
   console.log(`✗ Problems in: ${bad.join(", ")}`);

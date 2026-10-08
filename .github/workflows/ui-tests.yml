@@ -32,6 +32,9 @@ jobs:
       options: --user 1001
     env:
       CI: "true"
+      # Pushes and PRs: clean app on all five browser projects (~5 min).
+      # Nightly and manual runs: the full bug hunt (clean + each planted bug + all bugs).
+      FULL_HUNT: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
       # single-bug runs use three projects to keep CI time down; clean and all-bugs runs use all five
       PW_BUG_PROJECTS: chromium,firefox,mobile-chrome
     steps:
@@ -46,17 +49,18 @@ jobs:
         if: hashFiles('tests/visual/visual.spec.ts-snapshots/*.png') == '' || inputs.update_snapshots
         run: npx playwright test --grep @visual --update-snapshots=all
 
-      - name: Bug hunt (clean app, then each planted bug)
+      - name: Tests (push/PR) or full bug hunt (nightly/manual)
         id: hunt
         run: |
-          if node scripts/bug-hunt.mjs --update-readme; then
+          if [ "$FULL_HUNT" = "true" ]; then ARGS="--update-readme"; else ARGS="--runs=clean"; fi
+          if node scripts/bug-hunt.mjs $ARGS; then
             echo "problems=false" >> "$GITHUB_OUTPUT"
           else
             echo "problems=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Build dashboard
-        if: always()
+        if: always() && env.FULL_HUNT == 'true'
         run: node scripts/build-site.mjs
 
       - name: Keep reports
@@ -71,7 +75,7 @@ jobs:
           retention-days: 14
 
       - name: Upload dashboard
-        if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: always() && env.FULL_HUNT == 'true' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
@@ -105,7 +109,7 @@ jobs:
 
   deploy:
     needs: ui
-    if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.ui.result != 'cancelled'
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main' && needs.ui.result != 'cancelled'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

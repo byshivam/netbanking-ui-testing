@@ -84,4 +84,9 @@ Visual baselines are created in CI inside the Playwright Docker image, so screen
 
 ## CI
 
-`.github/workflows/ui-tests.yml` runs in the official Playwright Docker image on every push and PR, and daily at 03:37 IST: type check, bug hunt (all five projects for the clean and all-bugs runs; Chromium, Firefox and Pixel 7 for single-bug runs), dashboard and Playwright report to GitHub Pages. Visual baselines are created on the first run and committed; re-create them with the `update_snapshots` option of a manual run after an intended UI change.
+`.github/workflows/ui-tests.yml` runs in the official Playwright Docker image.
+
+- **Every push and PR (~5 min):** type check, then the full suite against the clean app on all five browser projects.
+- **Daily at 03:37 IST and on manual runs:** the full bug hunt (clean app, each planted bug, every bug on), then the dashboard and Playwright report go to GitHub Pages and the Results section above is refreshed.
+
+Visual baselines are created on the first run and committed; re-create them with the `update_snapshots` option of a manual run after an intended UI change.
