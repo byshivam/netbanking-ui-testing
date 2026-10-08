@@ -1,0 +1,2024 @@
+[
+  {
+    "run": "clean",
+    "exitCode": 0,
+    "durationS": 141.1,
+    "total": 328,
+    "passed": 325,
+    "skipped": 3,
+    "failed": 0,
+    "failedLayers": [],
+    "failedProjects": [],
+    "projects": [
+      "chromium",
+      "firefox",
+      "webkit",
+      "mobile-chrome",
+      "mobile-safari"
+    ],
+    "failedTests": [],
+    "verdict": "PASS"
+  },
+  {
+    "run": "UI-01",
+    "exitCode": 1,
+    "durationS": 135.3,
+    "total": 200,
+    "passed": 169,
+    "skipped": 1,
+    "failed": 30,
+    "failedLayers": [
+      "Accessibility",
+      "Visual",
+      "Network",
+      "E2E"
+    ],
+    "failedProjects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "projects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "failedTests": [
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › transfer review step",
+        "name": "transfer review step",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › a transfer can be completed with the keyboard only",
+        "name": "a transfer can be completed with the keyboard only",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeFocused() failed"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › transfer review step",
+        "name": "transfer review step",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › a transfer can be completed with the keyboard only",
+        "name": "a transfer can be completed with the keyboard only",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeFocused() failed"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › transfer review step",
+        "name": "transfer review step",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Statement › a new transfer shows up in the statement",
+        "name": "a new transfer shows up in the statement",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Statement › a new transfer shows up in the statement",
+        "name": "a new transfer shows up in the statement",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Statement › a new transfer shows up in the statement",
+        "name": "a new transfer shows up in the statement",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › transfer with paise: review, confirm, and the exact amount leaves the account",
+        "name": "transfer with paise: review, confirm, and the exact amount leaves the account",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › insufficient funds: clear error and no money moves",
+        "name": "insufficient funds: clear error and no money moves",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › double-clicking Confirm sends the money once",
+        "name": "double-clicking Confirm sends the money once",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › Confirm is disabled while the transfer is being sent",
+        "name": "Confirm is disabled while the transfer is being sent",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › transfer with paise: review, confirm, and the exact amount leaves the account",
+        "name": "transfer with paise: review, confirm, and the exact amount leaves the account",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › insufficient funds: clear error and no money moves",
+        "name": "insufficient funds: clear error and no money moves",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › double-clicking Confirm sends the money once",
+        "name": "double-clicking Confirm sends the money once",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › Confirm is disabled while the transfer is being sent",
+        "name": "Confirm is disabled while the transfer is being sent",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › transfer with paise: review, confirm, and the exact amount leaves the account",
+        "name": "transfer with paise: review, confirm, and the exact amount leaves the account",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › insufficient funds: clear error and no money moves",
+        "name": "insufficient funds: clear error and no money moves",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › double-clicking Confirm sends the money once",
+        "name": "double-clicking Confirm sends the money once",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › Confirm is disabled while the transfer is being sent",
+        "name": "Confirm is disabled while the transfer is being sent",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › transfer API returns 500: error shown, no success screen, no money moves",
+        "name": "transfer API returns 500: error shown, no success screen, no money moves",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › network drops during transfer: customer is told nothing was sent",
+        "name": "network drops during transfer: customer is told nothing was sent",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › transfer API returns 500: error shown, no success screen, no money moves",
+        "name": "transfer API returns 500: error shown, no success screen, no money moves",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › network drops during transfer: customer is told nothing was sent",
+        "name": "network drops during transfer: customer is told nothing was sent",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › transfer API returns 500: error shown, no success screen, no money moves",
+        "name": "transfer API returns 500: error shown, no success screen, no money moves",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › network drops during transfer: customer is told nothing was sent",
+        "name": "network drops during transfer: customer is told nothing was sent",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Visual regression › transfer review",
+        "name": "transfer review",
+        "file": "visual/visual.spec.ts",
+        "layer": "Visual",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(page).toHaveScreenshot(expected) failed"
+      }
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "UI-02",
+    "exitCode": 1,
+    "durationS": 74.2,
+    "total": 200,
+    "passed": 196,
+    "skipped": 1,
+    "failed": 3,
+    "failedLayers": [
+      "Accessibility"
+    ],
+    "failedProjects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "projects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "failedTests": [
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › login page showing an error",
+        "name": "login page showing an error",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › login page showing an error",
+        "name": "login page showing an error",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › login page showing an error",
+        "name": "login page showing an error",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      }
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "UI-03",
+    "exitCode": 1,
+    "durationS": 80.4,
+    "total": 200,
+    "passed": 191,
+    "skipped": 1,
+    "failed": 8,
+    "failedLayers": [
+      "Accessibility",
+      "E2E"
+    ],
+    "failedProjects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "projects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "failedTests": [
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › a transfer can be completed with the keyboard only",
+        "name": "a transfer can be completed with the keyboard only",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(locator).toHaveText(expected) failed"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › a transfer can be completed with the keyboard only",
+        "name": "a transfer can be completed with the keyboard only",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toHaveText(expected) failed"
+      },
+      {
+        "title": "Statement › a new transfer shows up in the statement",
+        "name": "a new transfer shows up in the statement",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Statement › a new transfer shows up in the statement",
+        "name": "a new transfer shows up in the statement",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Statement › a new transfer shows up in the statement",
+        "name": "a new transfer shows up in the statement",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Send money › transfer with paise: review, confirm, and the exact amount leaves the account",
+        "name": "transfer with paise: review, confirm, and the exact amount leaves the account",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(locator).toHaveText(expected) failed"
+      },
+      {
+        "title": "Send money › transfer with paise: review, confirm, and the exact amount leaves the account",
+        "name": "transfer with paise: review, confirm, and the exact amount leaves the account",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toHaveText(expected) failed"
+      },
+      {
+        "title": "Send money › transfer with paise: review, confirm, and the exact amount leaves the account",
+        "name": "transfer with paise: review, confirm, and the exact amount leaves the account",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(locator).toHaveText(expected) failed"
+      }
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "UI-04",
+    "exitCode": 1,
+    "durationS": 75.4,
+    "total": 200,
+    "passed": 195,
+    "skipped": 1,
+    "failed": 4,
+    "failedLayers": [
+      "Visual",
+      "Responsive",
+      "E2E"
+    ],
+    "failedProjects": [
+      "mobile-chrome"
+    ],
+    "projects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "failedTests": [
+      {
+        "title": "Dashboard › quick action \"Download statement\" opens the right page",
+        "name": "quick action \"Download statement\" opens the right page",
+        "file": "e2e/dashboard.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Responsive layout › /dashboard has no sideways scrolling",
+        "name": "/dashboard has no sideways scrolling",
+        "file": "mobile/responsive.spec.ts",
+        "layer": "Responsive",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: pixels of horizontal overflow"
+      },
+      {
+        "title": "Responsive layout › dashboard quick actions are fully on screen",
+        "name": "dashboard quick actions are fully on screen",
+        "file": "mobile/responsive.spec.ts",
+        "layer": "Responsive",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: Download statement right edge"
+      },
+      {
+        "title": "Visual regression › dashboard",
+        "name": "dashboard",
+        "file": "visual/visual.spec.ts",
+        "layer": "Visual",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(page).toHaveScreenshot(expected) failed"
+      }
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "UI-05",
+    "exitCode": 1,
+    "durationS": 76,
+    "total": 200,
+    "passed": 191,
+    "skipped": 1,
+    "failed": 8,
+    "failedLayers": [
+      "Network",
+      "E2E"
+    ],
+    "failedProjects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "projects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "failedTests": [
+      {
+        "title": "Send money › double-clicking Confirm sends the money once",
+        "name": "double-clicking Confirm sends the money once",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(received).toHaveLength(expected)"
+      },
+      {
+        "title": "Send money › Confirm is disabled while the transfer is being sent",
+        "name": "Confirm is disabled while the transfer is being sent",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeDisabled() failed"
+      },
+      {
+        "title": "Send money › Confirm is disabled while the transfer is being sent",
+        "name": "Confirm is disabled while the transfer is being sent",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeDisabled() failed"
+      },
+      {
+        "title": "Send money › double-clicking Confirm sends the money once",
+        "name": "double-clicking Confirm sends the money once",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(received).toHaveLength(expected)"
+      },
+      {
+        "title": "Send money › Confirm is disabled while the transfer is being sent",
+        "name": "Confirm is disabled while the transfer is being sent",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeDisabled() failed"
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(received).toBe(expected) // Object.is equality"
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(received).toBe(expected) // Object.is equality"
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(received).toBe(expected) // Object.is equality"
+      }
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "UI-06",
+    "exitCode": 1,
+    "durationS": 92.3,
+    "total": 200,
+    "passed": 187,
+    "skipped": 1,
+    "failed": 12,
+    "failedLayers": [
+      "Network",
+      "E2E"
+    ],
+    "failedProjects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "projects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "failedTests": [
+      {
+        "title": "Send money › insufficient funds: clear error and no money moves",
+        "name": "insufficient funds: clear error and no money moves",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Send money › insufficient funds: clear error and no money moves",
+        "name": "insufficient funds: clear error and no money moves",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Send money › insufficient funds: clear error and no money moves",
+        "name": "insufficient funds: clear error and no money moves",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Slow and failing network › transfer API returns 500: error shown, no success screen, no money moves",
+        "name": "transfer API returns 500: error shown, no success screen, no money moves",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Slow and failing network › network drops during transfer: customer is told nothing was sent",
+        "name": "network drops during transfer: customer is told nothing was sent",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Slow and failing network › transfer API returns 500: error shown, no success screen, no money moves",
+        "name": "transfer API returns 500: error shown, no success screen, no money moves",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Slow and failing network › network drops during transfer: customer is told nothing was sent",
+        "name": "network drops during transfer: customer is told nothing was sent",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Slow and failing network › transfer API returns 500: error shown, no success screen, no money moves",
+        "name": "transfer API returns 500: error shown, no success screen, no money moves",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Slow and failing network › network drops during transfer: customer is told nothing was sent",
+        "name": "network drops during transfer: customer is told nothing was sent",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      }
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "UI-07",
+    "exitCode": 1,
+    "durationS": 92.7,
+    "total": 200,
+    "passed": 187,
+    "skipped": 1,
+    "failed": 12,
+    "failedLayers": [
+      "Accessibility",
+      "E2E"
+    ],
+    "failedProjects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "projects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "failedTests": [
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › every form field has a visible label (placeholders are not labels)",
+        "name": "every form field has a visible label (placeholders are not labels)",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: fields without a <label> on /beneficiaries"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › every form field has a visible label (placeholders are not labels)",
+        "name": "every form field has a visible label (placeholders are not labels)",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: fields without a <label> on /beneficiaries"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › every form field has a visible label (placeholders are not labels)",
+        "name": "every form field has a visible label (placeholders are not labels)",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: fields without a <label> on /beneficiaries"
+      },
+      {
+        "title": "Beneficiaries › add a beneficiary using the labelled form, then pay them",
+        "name": "add a beneficiary using the labelled form, then pay them",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › invalid account number and IFSC are flagged on the right fields",
+        "name": "invalid account number and IFSC are flagged on the right fields",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › an existing beneficiary can't be added twice",
+        "name": "an existing beneficiary can't be added twice",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › add a beneficiary using the labelled form, then pay them",
+        "name": "add a beneficiary using the labelled form, then pay them",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › invalid account number and IFSC are flagged on the right fields",
+        "name": "invalid account number and IFSC are flagged on the right fields",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › an existing beneficiary can't be added twice",
+        "name": "an existing beneficiary can't be added twice",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › add a beneficiary using the labelled form, then pay them",
+        "name": "add a beneficiary using the labelled form, then pay them",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › invalid account number and IFSC are flagged on the right fields",
+        "name": "invalid account number and IFSC are flagged on the right fields",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › an existing beneficiary can't be added twice",
+        "name": "an existing beneficiary can't be added twice",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      }
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "UI-08",
+    "exitCode": 1,
+    "durationS": 76.4,
+    "total": 200,
+    "passed": 196,
+    "skipped": 1,
+    "failed": 3,
+    "failedLayers": [
+      "E2E"
+    ],
+    "failedProjects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "projects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "failedTests": [
+      {
+        "title": "Login and session › logout ends the session: the dashboard no longer opens",
+        "name": "logout ends the session: the dashboard no longer opens",
+        "file": "e2e/login.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(page).toHaveURL(expected) failed"
+      },
+      {
+        "title": "Login and session › logout ends the session: the dashboard no longer opens",
+        "name": "logout ends the session: the dashboard no longer opens",
+        "file": "e2e/login.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(page).toHaveURL(expected) failed"
+      },
+      {
+        "title": "Login and session › logout ends the session: the dashboard no longer opens",
+        "name": "logout ends the session: the dashboard no longer opens",
+        "file": "e2e/login.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(page).toHaveURL(expected) failed"
+      }
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "UI-09",
+    "exitCode": 1,
+    "durationS": 86.5,
+    "total": 200,
+    "passed": 191,
+    "skipped": 1,
+    "failed": 8,
+    "failedLayers": [
+      "Accessibility",
+      "Network",
+      "E2E"
+    ],
+    "failedProjects": [
+      "firefox"
+    ],
+    "projects": [
+      "chromium",
+      "firefox",
+      "mobile-chrome"
+    ],
+    "failedTests": [
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › statement",
+        "name": "statement",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › default view: salary account from 1 Sep to today",
+        "name": "default view: salary account from 1 Sep to today",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › September only: right rows and totals",
+        "name": "September only: right rows and totals",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › range boundaries are inclusive",
+        "name": "range boundaries are inclusive",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › a period with no transactions shows an empty state",
+        "name": "a period with no transactions shows an empty state",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › From after To is rejected",
+        "name": "From after To is rejected",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › a new transfer shows up in the statement",
+        "name": "a new transfer shows up in the statement",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Slow and failing network › statement API fails: error with Retry instead of an empty table",
+        "name": "statement API fails: error with Retry instead of an empty table",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      }
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "all",
+    "exitCode": 1,
+    "durationS": 301.3,
+    "total": 328,
+    "passed": 220,
+    "skipped": 3,
+    "failed": 105,
+    "failedLayers": [
+      "Accessibility",
+      "Visual",
+      "Network",
+      "Responsive",
+      "E2E"
+    ],
+    "failedProjects": [
+      "chromium",
+      "firefox",
+      "webkit",
+      "mobile-chrome",
+      "mobile-safari"
+    ],
+    "projects": [
+      "chromium",
+      "firefox",
+      "webkit",
+      "mobile-chrome",
+      "mobile-safari"
+    ],
+    "failedTests": [
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › login page showing an error",
+        "name": "login page showing an error",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › transfer review step",
+        "name": "transfer review step",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › every form field has a visible label (placeholders are not labels)",
+        "name": "every form field has a visible label (placeholders are not labels)",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: fields without a <label> on /beneficiaries"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › a transfer can be completed with the keyboard only",
+        "name": "a transfer can be completed with the keyboard only",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(locator).toHaveText(expected) failed"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › login page showing an error",
+        "name": "login page showing an error",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › transfer review step",
+        "name": "transfer review step",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › statement",
+        "name": "statement",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › every form field has a visible label (placeholders are not labels)",
+        "name": "every form field has a visible label (placeholders are not labels)",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: fields without a <label> on /beneficiaries"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › a transfer can be completed with the keyboard only",
+        "name": "a transfer can be completed with the keyboard only",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toHaveText(expected) failed"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › login page showing an error",
+        "name": "login page showing an error",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "webkit",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › transfer review step",
+        "name": "transfer review step",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "webkit",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › statement",
+        "name": "statement",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "webkit",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › every form field has a visible label (placeholders are not labels)",
+        "name": "every form field has a visible label (placeholders are not labels)",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "webkit",
+        "status": "failed",
+        "error": "Error: fields without a <label> on /beneficiaries"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › login page showing an error",
+        "name": "login page showing an error",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › transfer review step",
+        "name": "transfer review step",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › every form field has a visible label (placeholders are not labels)",
+        "name": "every form field has a visible label (placeholders are not labels)",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: fields without a <label> on /beneficiaries"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › login page showing an error",
+        "name": "login page showing an error",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › transfer review step",
+        "name": "transfer review step",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: 1 WCAG violation(s)"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › statement",
+        "name": "statement",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Accessibility (WCAG 2.2 AA) › every form field has a visible label (placeholders are not labels)",
+        "name": "every form field has a visible label (placeholders are not labels)",
+        "file": "a11y/a11y.spec.ts",
+        "layer": "Accessibility",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: fields without a <label> on /beneficiaries"
+      },
+      {
+        "title": "Beneficiaries › add a beneficiary using the labelled form, then pay them",
+        "name": "add a beneficiary using the labelled form, then pay them",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › invalid account number and IFSC are flagged on the right fields",
+        "name": "invalid account number and IFSC are flagged on the right fields",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › an existing beneficiary can't be added twice",
+        "name": "an existing beneficiary can't be added twice",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › add a beneficiary using the labelled form, then pay them",
+        "name": "add a beneficiary using the labelled form, then pay them",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › invalid account number and IFSC are flagged on the right fields",
+        "name": "invalid account number and IFSC are flagged on the right fields",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › an existing beneficiary can't be added twice",
+        "name": "an existing beneficiary can't be added twice",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › add a beneficiary using the labelled form, then pay them",
+        "name": "add a beneficiary using the labelled form, then pay them",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › invalid account number and IFSC are flagged on the right fields",
+        "name": "invalid account number and IFSC are flagged on the right fields",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › an existing beneficiary can't be added twice",
+        "name": "an existing beneficiary can't be added twice",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › add a beneficiary using the labelled form, then pay them",
+        "name": "add a beneficiary using the labelled form, then pay them",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › invalid account number and IFSC are flagged on the right fields",
+        "name": "invalid account number and IFSC are flagged on the right fields",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › an existing beneficiary can't be added twice",
+        "name": "an existing beneficiary can't be added twice",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › add a beneficiary using the labelled form, then pay them",
+        "name": "add a beneficiary using the labelled form, then pay them",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › invalid account number and IFSC are flagged on the right fields",
+        "name": "invalid account number and IFSC are flagged on the right fields",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Beneficiaries › an existing beneficiary can't be added twice",
+        "name": "an existing beneficiary can't be added twice",
+        "file": "e2e/beneficiaries.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "TimeoutError: locator.fill: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Dashboard › quick action \"Download statement\" opens the right page",
+        "name": "quick action \"Download statement\" opens the right page",
+        "file": "e2e/dashboard.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Login and session › logout ends the session: the dashboard no longer opens",
+        "name": "logout ends the session: the dashboard no longer opens",
+        "file": "e2e/login.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(page).toHaveURL(expected) failed"
+      },
+      {
+        "title": "Login and session › logout ends the session: the dashboard no longer opens",
+        "name": "logout ends the session: the dashboard no longer opens",
+        "file": "e2e/login.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(page).toHaveURL(expected) failed"
+      },
+      {
+        "title": "Login and session › logout ends the session: the dashboard no longer opens",
+        "name": "logout ends the session: the dashboard no longer opens",
+        "file": "e2e/login.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "Error: expect(page).toHaveURL(expected) failed"
+      },
+      {
+        "title": "Login and session › logout ends the session: the dashboard no longer opens",
+        "name": "logout ends the session: the dashboard no longer opens",
+        "file": "e2e/login.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(page).toHaveURL(expected) failed"
+      },
+      {
+        "title": "Login and session › logout ends the session: the dashboard no longer opens",
+        "name": "logout ends the session: the dashboard no longer opens",
+        "file": "e2e/login.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: expect(page).toHaveURL(expected) failed"
+      },
+      {
+        "title": "Statement › a new transfer shows up in the statement",
+        "name": "a new transfer shows up in the statement",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Statement › default view: salary account from 1 Sep to today",
+        "name": "default view: salary account from 1 Sep to today",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › September only: right rows and totals",
+        "name": "September only: right rows and totals",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › range boundaries are inclusive",
+        "name": "range boundaries are inclusive",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › a period with no transactions shows an empty state",
+        "name": "a period with no transactions shows an empty state",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › From after To is rejected",
+        "name": "From after To is rejected",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › a new transfer shows up in the statement",
+        "name": "a new transfer shows up in the statement",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › default view: salary account from 1 Sep to today",
+        "name": "default view: salary account from 1 Sep to today",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › September only: right rows and totals",
+        "name": "September only: right rows and totals",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › range boundaries are inclusive",
+        "name": "range boundaries are inclusive",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › a period with no transactions shows an empty state",
+        "name": "a period with no transactions shows an empty state",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › From after To is rejected",
+        "name": "From after To is rejected",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › a new transfer shows up in the statement",
+        "name": "a new transfer shows up in the statement",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › a new transfer shows up in the statement",
+        "name": "a new transfer shows up in the statement",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Statement › default view: salary account from 1 Sep to today",
+        "name": "default view: salary account from 1 Sep to today",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › September only: right rows and totals",
+        "name": "September only: right rows and totals",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › range boundaries are inclusive",
+        "name": "range boundaries are inclusive",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › a period with no transactions shows an empty state",
+        "name": "a period with no transactions shows an empty state",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › From after To is rejected",
+        "name": "From after To is rejected",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Statement › a new transfer shows up in the statement",
+        "name": "a new transfer shows up in the statement",
+        "file": "e2e/statement.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      },
+      {
+        "title": "Send money › transfer with paise: review, confirm, and the exact amount leaves the account",
+        "name": "transfer with paise: review, confirm, and the exact amount leaves the account",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "Error: expect(locator).toHaveText(expected) failed"
+      },
+      {
+        "title": "Send money › insufficient funds: clear error and no money moves",
+        "name": "insufficient funds: clear error and no money moves",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › double-clicking Confirm sends the money once",
+        "name": "double-clicking Confirm sends the money once",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › Confirm is disabled while the transfer is being sent",
+        "name": "Confirm is disabled while the transfer is being sent",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › transfer with paise: review, confirm, and the exact amount leaves the account",
+        "name": "transfer with paise: review, confirm, and the exact amount leaves the account",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toHaveText(expected) failed"
+      },
+      {
+        "title": "Send money › insufficient funds: clear error and no money moves",
+        "name": "insufficient funds: clear error and no money moves",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › double-clicking Confirm sends the money once",
+        "name": "double-clicking Confirm sends the money once",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › Confirm is disabled while the transfer is being sent",
+        "name": "Confirm is disabled while the transfer is being sent",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › transfer with paise: review, confirm, and the exact amount leaves the account",
+        "name": "transfer with paise: review, confirm, and the exact amount leaves the account",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "Error: expect(locator).toHaveText(expected) failed"
+      },
+      {
+        "title": "Send money › insufficient funds: clear error and no money moves",
+        "name": "insufficient funds: clear error and no money moves",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › double-clicking Confirm sends the money once",
+        "name": "double-clicking Confirm sends the money once",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › Confirm is disabled while the transfer is being sent",
+        "name": "Confirm is disabled while the transfer is being sent",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "webkit",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › transfer with paise: review, confirm, and the exact amount leaves the account",
+        "name": "transfer with paise: review, confirm, and the exact amount leaves the account",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(locator).toHaveText(expected) failed"
+      },
+      {
+        "title": "Send money › insufficient funds: clear error and no money moves",
+        "name": "insufficient funds: clear error and no money moves",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › double-clicking Confirm sends the money once",
+        "name": "double-clicking Confirm sends the money once",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › Confirm is disabled while the transfer is being sent",
+        "name": "Confirm is disabled while the transfer is being sent",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › transfer with paise: review, confirm, and the exact amount leaves the account",
+        "name": "transfer with paise: review, confirm, and the exact amount leaves the account",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: expect(locator).toHaveText(expected) failed"
+      },
+      {
+        "title": "Send money › insufficient funds: clear error and no money moves",
+        "name": "insufficient funds: clear error and no money moves",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › double-clicking Confirm sends the money once",
+        "name": "double-clicking Confirm sends the money once",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "TimeoutError: locator.dblclick: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Send money › Confirm is disabled while the transfer is being sent",
+        "name": "Confirm is disabled while the transfer is being sent",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Responsive layout › /dashboard has no sideways scrolling",
+        "name": "/dashboard has no sideways scrolling",
+        "file": "mobile/responsive.spec.ts",
+        "layer": "Responsive",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: pixels of horizontal overflow"
+      },
+      {
+        "title": "Responsive layout › dashboard quick actions are fully on screen",
+        "name": "dashboard quick actions are fully on screen",
+        "file": "mobile/responsive.spec.ts",
+        "layer": "Responsive",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: Download statement right edge"
+      },
+      {
+        "title": "Responsive layout › /dashboard has no sideways scrolling",
+        "name": "/dashboard has no sideways scrolling",
+        "file": "mobile/responsive.spec.ts",
+        "layer": "Responsive",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: pixels of horizontal overflow"
+      },
+      {
+        "title": "Responsive layout › dashboard quick actions are fully on screen",
+        "name": "dashboard quick actions are fully on screen",
+        "file": "mobile/responsive.spec.ts",
+        "layer": "Responsive",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: Download statement right edge"
+      },
+      {
+        "title": "Slow and failing network › transfer API returns 500: error shown, no success screen, no money moves",
+        "name": "transfer API returns 500: error shown, no success screen, no money moves",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › network drops during transfer: customer is told nothing was sent",
+        "name": "network drops during transfer: customer is told nothing was sent",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "chromium",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › transfer API returns 500: error shown, no success screen, no money moves",
+        "name": "transfer API returns 500: error shown, no success screen, no money moves",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › network drops during transfer: customer is told nothing was sent",
+        "name": "network drops during transfer: customer is told nothing was sent",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "firefox",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › statement API fails: error with Retry instead of an empty table",
+        "name": "statement API fails: error with Retry instead of an empty table",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "firefox",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Slow and failing network › transfer API returns 500: error shown, no success screen, no money moves",
+        "name": "transfer API returns 500: error shown, no success screen, no money moves",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "webkit",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › network drops during transfer: customer is told nothing was sent",
+        "name": "network drops during transfer: customer is told nothing was sent",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "webkit",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "webkit",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › statement API fails: error with Retry instead of an empty table",
+        "name": "statement API fails: error with Retry instead of an empty table",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "webkit",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Slow and failing network › transfer API returns 500: error shown, no success screen, no money moves",
+        "name": "transfer API returns 500: error shown, no success screen, no money moves",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › network drops during transfer: customer is told nothing was sent",
+        "name": "network drops during transfer: customer is told nothing was sent",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › transfer API returns 500: error shown, no success screen, no money moves",
+        "name": "transfer API returns 500: error shown, no success screen, no money moves",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › network drops during transfer: customer is told nothing was sent",
+        "name": "network drops during transfer: customer is told nothing was sent",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › retry after a failure uses the same idempotency key, so the money moves once",
+        "name": "retry after a failure uses the same idempotency key, so the money moves once",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "TimeoutError: locator.click: Timeout 10000ms exceeded."
+      },
+      {
+        "title": "Slow and failing network › statement API fails: error with Retry instead of an empty table",
+        "name": "statement API fails: error with Retry instead of an empty table",
+        "file": "network/network.spec.ts",
+        "layer": "Network",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: expect(locator).toContainText(expected) failed"
+      },
+      {
+        "title": "Visual regression › dashboard",
+        "name": "dashboard",
+        "file": "visual/visual.spec.ts",
+        "layer": "Visual",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(page).toHaveScreenshot(expected) failed"
+      },
+      {
+        "title": "Visual regression › transfer review",
+        "name": "transfer review",
+        "file": "visual/visual.spec.ts",
+        "layer": "Visual",
+        "project": "mobile-chrome",
+        "status": "failed",
+        "error": "Error: expect(page).toHaveScreenshot(expected) failed"
+      }
+    ],
+    "verdict": "CAUGHT"
+  }
+]
