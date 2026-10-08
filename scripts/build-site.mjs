@@ -90,8 +90,19 @@ function allure(run, dir, label, useHistory) {
   if (!existsSync(resultsDir)) return;
   const args = ["allure", "generate", resultsDir, "-o", `${SITE}/${dir}`, "--name", label];
   // the clean run uses allurerc.mjs (history trend); the all-bugs run is generated outside it, without history
-  const proc = spawnSync("npx", args, { cwd: useHistory ? ROOT : `${ROOT}work`, stdio: "inherit" });
-  if (proc.status === 0) links.push([`${dir}/index.html`, label, useHistory ? "Allure, with run-to-run trend" : "Allure, every planted bug on"]);
+  const proc = spawnSync("npx", args, { cwd: useHistory ? ROOT : `${ROOT}work`, encoding: "utf8" });
+  process.stdout.write(proc.stdout || "");
+  process.stderr.write(proc.stderr || "");
+  if (proc.status !== 0 && process.env.GITHUB_ACTIONS) {
+    const why = `${proc.stderr || ""}${proc.stdout || ""}`.trim().split("\n").slice(-3).join(" ").slice(0, 400);
+    console.log(`::warning title=allure generate (${run}) exited ${proc.status}::${why}`);
+  }
+  // link the report whenever it was written; the CLI's exit code also reflects test failures
+  if (existsSync(`${SITE}/${dir}/index.html`)) {
+    links.push([`${dir}/index.html`, label, useHistory ? "Allure, with run-to-run trend" : "Allure, every planted bug on"]);
+  } else if (process.env.GITHUB_ACTIONS) {
+    console.log(`::warning title=allure report missing (${run})::No index.html in site/${dir}`);
+  }
 }
 allure("clean", "allure", "Allure report — clean app", true);
 allure("all", "allure-all-bugs", "Allure report — every bug on", false);
