@@ -88,8 +88,8 @@ jobs:
           {
             set -e
             git config --global --add safe.directory "$GITHUB_WORKSPACE"
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git config user.name "Shivam Tayal"
+            git config user.email "71970833+tayalshivam@users.noreply.github.com"
             git add tests/visual/visual.spec.ts-snapshots
             if [ "${{ github.event_name }}" != "push" ]; then git add README.md reports/; fi
             if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
