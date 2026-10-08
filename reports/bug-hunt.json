@@ -1,14 +1,18 @@
 [
   {
     "run": "clean",
-    "exitCode": 0,
-    "durationS": 141.1,
+    "exitCode": 1,
+    "durationS": 150.2,
     "total": 328,
-    "passed": 325,
+    "passed": 324,
     "skipped": 3,
-    "failed": 0,
-    "failedLayers": [],
-    "failedProjects": [],
+    "failed": 1,
+    "failedLayers": [
+      "E2E"
+    ],
+    "failedProjects": [
+      "mobile-safari"
+    ],
     "projects": [
       "chromium",
       "firefox",
@@ -16,13 +20,23 @@
       "mobile-chrome",
       "mobile-safari"
     ],
-    "failedTests": [],
-    "verdict": "PASS"
+    "failedTests": [
+      {
+        "title": "Send money › double-clicking Confirm sends the money once",
+        "name": "double-clicking Confirm sends the money once",
+        "file": "e2e/transfer.spec.ts",
+        "layer": "E2E",
+        "project": "mobile-safari",
+        "status": "failed",
+        "error": "Error: expect(locator).toBeVisible() failed"
+      }
+    ],
+    "verdict": "FALSE ALARM"
   },
   {
     "run": "UI-01",
     "exitCode": 1,
-    "durationS": 135.3,
+    "durationS": 141.2,
     "total": 200,
     "passed": 169,
     "skipped": 1,
@@ -320,7 +334,7 @@
   {
     "run": "UI-02",
     "exitCode": 1,
-    "durationS": 74.2,
+    "durationS": 79.1,
     "total": 200,
     "passed": 196,
     "skipped": 1,
@@ -372,7 +386,7 @@
   {
     "run": "UI-03",
     "exitCode": 1,
-    "durationS": 80.4,
+    "durationS": 84,
     "total": 200,
     "passed": 191,
     "skipped": 1,
@@ -470,7 +484,7 @@
   {
     "run": "UI-04",
     "exitCode": 1,
-    "durationS": 75.4,
+    "durationS": 75.3,
     "total": 200,
     "passed": 195,
     "skipped": 1,
@@ -531,7 +545,7 @@
   {
     "run": "UI-05",
     "exitCode": 1,
-    "durationS": 76,
+    "durationS": 75.8,
     "total": 200,
     "passed": 191,
     "skipped": 1,
@@ -629,7 +643,7 @@
   {
     "run": "UI-06",
     "exitCode": 1,
-    "durationS": 92.3,
+    "durationS": 93.8,
     "total": 200,
     "passed": 187,
     "skipped": 1,
@@ -763,7 +777,7 @@
   {
     "run": "UI-07",
     "exitCode": 1,
-    "durationS": 92.7,
+    "durationS": 92.9,
     "total": 200,
     "passed": 187,
     "skipped": 1,
@@ -897,7 +911,7 @@
   {
     "run": "UI-08",
     "exitCode": 1,
-    "durationS": 76.4,
+    "durationS": 75.7,
     "total": 200,
     "passed": 196,
     "skipped": 1,
@@ -1046,7 +1060,7 @@
   {
     "run": "all",
     "exitCode": 1,
-    "durationS": 301.3,
+    "durationS": 305.1,
     "total": 328,
     "passed": 220,
     "skipped": 3,
