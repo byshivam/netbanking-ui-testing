@@ -1,0 +1,107 @@
+name: ui-tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "07 22 * * *" # daily, 03:37 IST
+  workflow_dispatch:
+    inputs:
+      update_snapshots:
+        description: "Re-create visual baselines (only after an intended UI change)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ui-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    # Same image (browsers + fonts) every run, so screenshots compare reliably.
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.0-noble
+      options: --user 1001
+    env:
+      CI: "true"
+      # single-bug runs use three projects to keep CI time down; clean and all-bugs runs use all five
+      PW_BUG_PROJECTS: chromium,firefox,mobile-chrome
+    steps:
+      - uses: actions/checkout@v5
+
+      - run: npm ci
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Create visual baselines (first run, or when asked)
+        if: hashFiles('tests/visual/visual.spec.ts-snapshots/*.png') == '' || inputs.update_snapshots
+        run: npx playwright test --grep @visual --update-snapshots=all
+
+      - name: Bug hunt (clean app, then each planted bug)
+        id: hunt
+        run: |
+          if node scripts/bug-hunt.mjs --update-readme; then
+            echo "problems=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "problems=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build dashboard
+        if: always()
+        run: node scripts/build-site.mjs
+
+      - name: Keep reports
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: playwright
+          path: |
+            reports/
+            work/*.log
+            work/report-clean/
+          retention-days: 14
+
+      - name: Upload dashboard
+        if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Commit visual baselines and refreshed results
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tests/visual/visual.spec.ts-snapshots
+          if [ "${{ github.event_name }}" != "push" ]; then git add README.md reports/; fi
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Update visual baselines / test results [skip ci]"
+          git pull --rebase origin main
+          git push
+
+      - name: Fail if the clean app failed or a bug escaped
+        if: steps.hunt.outputs.problems == 'true'
+        run: |
+          echo "::error::Tests failed on the clean app, or a planted bug was not caught. See the job summary."
+          exit 1
+
+  deploy:
+    needs: ui
+    if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.ui.result != 'cancelled'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    steps:
+      - id: pages
+        uses: actions/deploy-pages@v4

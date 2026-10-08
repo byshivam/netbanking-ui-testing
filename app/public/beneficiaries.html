@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beneficiaries · Arya Bank NetBanking</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <main class="stack">
+    <div class="page-head">
+      <h1>Beneficiaries</h1>
+      <p class="muted">People you can send money to.</p>
+    </div>
+    <div id="status" role="status"></div>
+    <section class="card" aria-labelledby="list-title">
+      <h2 id="list-title">Saved beneficiaries</h2>
+      <div id="list"><p class="loading">Loading…</p></div>
+    </section>
+    <section class="card" aria-labelledby="add-title">
+      <h2 id="add-title">Add a beneficiary</h2>
+      <form id="add-form" novalidate>
+        <div class="grid-2">
+          <div class="field">
+            <label for="ben-name">Account holder name</label>
+            <input id="ben-name" autocomplete="off" aria-describedby="ben-name-error">
+            <p class="field-error" id="ben-name-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="ben-account">Account number</label>
+            <input id="ben-account" autocomplete="off" spellcheck="false" aria-describedby="ben-account-hint ben-account-error">
+            <span class="hint" id="ben-account-hint">Format ACC-123456</span>
+            <p class="field-error" id="ben-account-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="ben-ifsc">IFSC</label>
+            <input id="ben-ifsc" autocomplete="off" spellcheck="false" aria-describedby="ben-ifsc-hint ben-ifsc-error">
+            <span class="hint" id="ben-ifsc-hint">11 characters, for example ARYB0000004</span>
+            <p class="field-error" id="ben-ifsc-error" hidden></p>
+          </div>
+        </div>
+        <button class="btn primary" type="submit">Add beneficiary</button>
+      </form>
+    </section>
+  </main>
+  <script type="module">
+    import { api, bootstrap, BUGS, el, showError, $ } from "/app.js";
+
+    await bootstrap();
+    const FIELDS = { name: "ben-name", accountNumber: "ben-account", ifsc: "ben-ifsc" };
+
+    if (BUGS.has("UI-07")) {
+      // placeholder-only inputs: the visible labels are dropped
+      $("#add-form").querySelectorAll("label").forEach((label) => {
+        const input = $(`#${label.htmlFor}`);
+        input.placeholder = label.textContent;
+        label.remove();
+      });
+    }
+
+    async function load() {
+      const box = $("#list");
+      try {
+        const { beneficiaries } = await api("/api/beneficiaries");
+        if (!beneficiaries.length) {
+          box.replaceChildren(el("p", { class: "empty" }, "No beneficiaries yet."));
+          return;
+        }
+        box.replaceChildren(el("div", { class: "table-wrap", tabindex: "0", role: "region", "aria-label": "Saved beneficiaries" }, el("table", {},
+          el("thead", {}, el("tr", {}, el("th", { scope: "col" }, "Name"), el("th", { scope: "col" }, "Account"),
+            el("th", { scope: "col" }, "IFSC"), el("th", { scope: "col" }, el("span", { class: "visually-hidden" }, "Actions")))),
+          el("tbody", {}, beneficiaries.map((b) => el("tr", { "data-beneficiary": b.id },
+            el("td", {}, b.name), el("td", {}, b.accountNumber), el("td", {}, b.ifsc),
+            el("td", {},
+              el("a", { class: "btn", href: `/transfer?to=${b.id}`, "aria-label": `Pay ${b.name}` }, "Pay"), " ",
+              el("button", { class: "btn", type: "button", "aria-label": `Remove ${b.name}`, onclick: () => remove(b) }, "Remove"))))))));
+      } catch {
+        showError(box, "We couldn't load your beneficiaries.", load);
+      }
+    }
+
+    async function remove(b) {
+      await api(`/api/beneficiaries/${b.id}`, { method: "DELETE" });
+      $("#status").replaceChildren(el("p", { class: "alert ok" }, `${b.name} was removed.`));
+      await load();
+    }
+
+    $("#add-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      for (const id of Object.values(FIELDS)) {
+        $(`#${id}`).removeAttribute("aria-invalid");
+        $(`#${id}-error`).hidden = true;
+      }
+      const body = { name: $("#ben-name").value, accountNumber: $("#ben-account").value, ifsc: $("#ben-ifsc").value };
+      try {
+        const added = await api("/api/beneficiaries", { method: "POST", body });
+        event.target.reset();
+        $("#status").replaceChildren(el("p", { class: "alert ok" }, `${added.name} was added.`));
+        await load();
+      } catch (err) {
+        const fields = err.body?.error?.fields || {};
+        for (const [field, message] of Object.entries(fields)) {
+          const id = FIELDS[field];
+          $(`#${id}`).setAttribute("aria-invalid", "true");
+          $(`#${id}-error`).textContent = message;
+          $(`#${id}-error`).hidden = false;
+        }
+        const first = Object.keys(fields)[0];
+        if (first) $(`#${FIELDS[first]}`).focus();
+        else $("#status").replaceChildren(el("p", { class: "alert error" }, err.message));
+      }
+    });
+
+    await load();
+  </script>
+</body>
+</html>

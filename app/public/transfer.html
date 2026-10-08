@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Send money · Arya Bank NetBanking</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <main>
+    <div class="page-head">
+      <h1>Send money</h1>
+      <p class="muted">Transfer to a saved beneficiary. Limit ₹1,00,000 per transfer.</p>
+    </div>
+
+    <section class="card" id="step-form" aria-labelledby="form-title">
+      <h2 id="form-title">Transfer details</h2>
+      <form id="transfer-form" novalidate>
+        <div class="grid-2">
+          <div class="field">
+            <label for="from">Pay from</label>
+            <select id="from" required></select>
+          </div>
+          <div class="field">
+            <label for="beneficiary">Pay to</label>
+            <select id="beneficiary" required aria-describedby="beneficiary-error"></select>
+            <p class="field-error" id="beneficiary-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="amount">Amount (₹)</label>
+            <input id="amount" inputmode="decimal" autocomplete="off" aria-describedby="amount-hint amount-error">
+            <span class="hint" id="amount-hint">Up to 2 decimals, for example 1500.75</span>
+            <p class="field-error" id="amount-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="remarks">Remarks <span class="muted">(optional)</span></label>
+            <input id="remarks" maxlength="40" autocomplete="off">
+          </div>
+        </div>
+        <button class="btn primary" type="submit">Review transfer</button>
+      </form>
+    </section>
+
+    <section class="card review" id="step-review" aria-labelledby="review-title" hidden>
+      <h2 id="review-title" tabindex="-1">Check and confirm</h2>
+      <dl>
+        <dt>Amount</dt><dd class="big" id="review-amount"></dd>
+        <dt>To</dt><dd id="review-to"></dd>
+        <dt>From</dt><dd id="review-from"></dd>
+        <dt>Remarks</dt><dd id="review-remarks"></dd>
+      </dl>
+      <div id="review-error"></div>
+      <div class="actions-row">
+        <button class="btn" type="button" id="edit">Edit</button>
+        <button class="btn primary" type="button" id="confirm">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>
+          <span id="confirm-label">Confirm transfer</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="card" id="step-done" aria-labelledby="done-title" hidden>
+      <div class="alert ok">
+        <h2 id="done-title" tabindex="-1">Transfer successful</h2>
+        <p id="done-text"></p>
+      </div>
+      <div class="actions-row">
+        <a class="btn primary" href="/dashboard">Back to dashboard</a>
+        <a class="btn" href="/transfer">Make another transfer</a>
+      </div>
+    </section>
+  </main>
+  <script type="module">
+    import { api, bootstrap, BUGS, el, inr, showError, $ } from "/app.js";
+
+    await bootstrap();
+    const LIMIT = 100000;
+    let accounts = [];
+    let beneficiaries = [];
+    let pending = null; // the transfer being reviewed
+    let idempotencyKey = null;
+
+    if (BUGS.has("UI-01")) $("#confirm-label").remove(); // icon-only button, no name
+
+    try {
+      [{ accounts }, { beneficiaries }] = await Promise.all([api("/api/accounts"), api("/api/beneficiaries")]);
+    } catch {
+      showError($("#step-form"), "We couldn't load your accounts. Please try again.", () => location.reload());
+    }
+    $("#from").replaceChildren(...accounts.map((a) =>
+      el("option", { value: a.accountNumber }, `${a.nickname} · ${a.accountNumber} · ${inr(a.balance)}`)));
+    $("#beneficiary").replaceChildren(el("option", { value: "" }, "Choose a beneficiary"),
+      ...beneficiaries.map((b) => el("option", { value: b.id }, `${b.name} · ${b.accountNumber}`)));
+    const preselect = new URLSearchParams(location.search).get("to");
+    if (preselect) $("#beneficiary").value = preselect;
+
+    function fieldError(id, message) {
+      const input = $(`#${id}`);
+      const err = $(`#${id}-error`);
+      input.setAttribute("aria-invalid", message ? "true" : "false");
+      err.textContent = message || "";
+      err.hidden = !message;
+    }
+
+    function validate() {
+      const amount = $("#amount").value.trim();
+      let ok = true;
+      fieldError("beneficiary", $("#beneficiary").value ? "" : "Choose who to pay.");
+      if (!$("#beneficiary").value) ok = false;
+      let msg = "";
+      if (!amount) msg = "Enter an amount.";
+      else if (!/^\d+(\.\d{1,2})?$/.test(amount)) msg = "Enter a number with up to 2 decimals, like 1500.75.";
+      else if (Number(amount) <= 0) msg = "Amount must be more than ₹0.";
+      else if (Number(amount) > LIMIT) msg = "The limit per transfer is ₹1,00,000.";
+      fieldError("amount", msg);
+      return ok && !msg;
+    }
+
+    function normalise(amount) {
+      if (BUGS.has("UI-03")) return String(parseInt(amount, 10)); // drops the paise
+      const [r, p = ""] = amount.split(".");
+      return `${Number(r)}.${(p + "00").slice(0, 2)}`;
+    }
+
+    $("#transfer-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!validate()) {
+        $("[aria-invalid='true']")?.focus();
+        return;
+      }
+      const from = accounts.find((a) => a.accountNumber === $("#from").value);
+      const to = beneficiaries.find((b) => b.id === $("#beneficiary").value);
+      pending = { from, to, amount: normalise($("#amount").value.trim()), remarks: $("#remarks").value.trim() };
+      idempotencyKey = crypto.randomUUID(); // one key per reviewed transfer: retries can't pay twice
+      $("#review-amount").textContent = inr(pending.amount);
+      $("#review-to").textContent = `${to.name} · ${to.accountNumber}`;
+      $("#review-from").textContent = `${from.nickname} · ${from.accountNumber}`;
+      $("#review-remarks").textContent = pending.remarks || "—";
+      $("#review-error").replaceChildren();
+      $("#step-form").hidden = true;
+      $("#step-review").hidden = false;
+      $("#confirm").disabled = false;
+      $("#review-title").focus();
+    });
+
+    $("#edit").addEventListener("click", () => {
+      $("#step-review").hidden = true;
+      $("#step-form").hidden = false;
+      $("#amount").focus();
+    });
+
+    function done(result) {
+      $("#done-text").textContent = result
+        ? `${inr(result.amount)} sent to ${result.beneficiary.name}. Reference ${result.transferId}. Balance now ${inr(result.balanceAfter)}.`
+        : "Reference —";
+      $("#step-review").hidden = true;
+      $("#step-done").hidden = false;
+      $("#done-title").focus();
+    }
+
+    $("#confirm").addEventListener("click", async () => {
+      const button = $("#confirm");
+      if (!BUGS.has("UI-05")) {
+        if (button.disabled) return;
+        button.disabled = true;
+        button.setAttribute("aria-busy", "true");
+      }
+      const key = BUGS.has("UI-05") ? crypto.randomUUID() : idempotencyKey;
+      try {
+        const result = await api("/api/transfers", {
+          method: "POST",
+          headers: { "Idempotency-Key": key },
+          body: { fromAccount: pending.from.accountNumber, beneficiaryId: pending.to.id, amount: pending.amount, remarks: pending.remarks },
+        });
+        done(result);
+      } catch (err) {
+        if (BUGS.has("UI-06")) {
+          done(null); // reports success even though nothing was sent
+          return;
+        }
+        const why = err.status ? err.message : "The network connection was lost.";
+        showError($("#review-error"), `Transfer could not be completed: ${why} No money has left your account.`);
+        button.disabled = false;
+        button.removeAttribute("aria-busy");
+      }
+    });
+  </script>
+</body>
+</html>

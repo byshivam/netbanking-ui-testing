@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Statement · Arya Bank NetBanking</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <main class="stack">
+    <div class="page-head">
+      <h1>Account statement</h1>
+      <p class="muted">Pick an account and a date range.</p>
+    </div>
+    <section class="card">
+      <form id="filters" class="filters" novalidate>
+        <div class="field">
+          <label for="account">Account</label>
+          <select id="account"></select>
+        </div>
+        <div class="field">
+          <label for="from-date">From</label>
+          <input id="from-date" type="date" value="2026-09-01" min="2026-01-01" max="2026-10-08">
+        </div>
+        <div class="field">
+          <label for="to-date">To</label>
+          <input id="to-date" type="date" value="2026-10-08" min="2026-01-01" max="2026-10-08">
+        </div>
+        <button class="btn primary" type="submit">Show</button>
+      </form>
+      <p class="field-error" id="range-error" role="alert" hidden></p>
+    </section>
+    <section class="card" aria-labelledby="result-title" aria-live="polite">
+      <h2 id="result-title">Transactions</h2>
+      <div id="result"><p class="loading" role="status">Loading…</p></div>
+    </section>
+  </main>
+  <script type="module">
+    import { api, bootstrap, BUGS, el, inr, longDate, showError, $ } from "/app.js";
+
+    await bootstrap();
+    const { accounts } = await api("/api/accounts");
+    $("#account").replaceChildren(...accounts.map((a) => el("option", { value: a.accountNumber }, `${a.nickname} · ${a.accountNumber}`)));
+
+    const sum = (rows) => rows.reduce((t, r) => t + Math.round(Number(r.amount) * 100), 0);
+    const paise = (n) => `${Math.trunc(n / 100)}.${String(n % 100).padStart(2, "0")}`;
+
+    async function show() {
+      const from = $("#from-date").value;
+      const to = $("#to-date").value;
+      const rangeError = $("#range-error");
+      if (from && to && from > to) {
+        rangeError.textContent = "The From date must be on or before the To date.";
+        rangeError.hidden = false;
+        return;
+      }
+      rangeError.hidden = true;
+      if (BUGS.has("UI-09")) {
+        // Chromium-only API: throws in Firefox and Safari, so the statement never renders there
+        $("#result").dataset.platform = navigator.userAgentData.platform;
+      }
+      const box = $("#result");
+      try {
+        const q = new URLSearchParams({ account: $("#account").value, from, to });
+        const { transactions } = await api(`/api/transactions?${q}`);
+        if (!transactions.length) {
+          box.replaceChildren(el("p", { class: "empty" }, "No transactions in this period."));
+          return;
+        }
+        const credits = transactions.filter((t) => t.direction === "CREDIT");
+        const debits = transactions.filter((t) => t.direction === "DEBIT");
+        box.replaceChildren(
+          el("div", { class: "table-wrap", tabindex: "0", role: "region", "aria-label": "Statement transactions" }, el("table", {},
+            el("caption", { class: "visually-hidden" }, `Transactions from ${longDate(from)} to ${longDate(to)}`),
+            el("thead", {}, el("tr", {}, el("th", { scope: "col" }, "Date"), el("th", { scope: "col" }, "Description"),
+              el("th", { scope: "col", class: "amt" }, "Debit"), el("th", { scope: "col", class: "amt" }, "Credit"))),
+            el("tbody", {}, transactions.map((t) => el("tr", { "data-date": t.date, "data-txn": t.id },
+              el("td", {}, longDate(t.date)), el("td", {}, t.description),
+              el("td", { class: "amt" }, t.direction === "DEBIT" ? inr(t.amount) : ""),
+              el("td", { class: "amt credit" }, t.direction === "CREDIT" ? inr(t.amount) : "")))))),
+          el("div", { class: "totals" },
+            el("span", { "data-testid": "total-debits" }, `Debits ${inr(paise(sum(debits)))}`),
+            el("span", { "data-testid": "total-credits" }, `Credits ${inr(paise(sum(credits)))}`),
+            el("span", { "data-testid": "row-count" }, `${transactions.length} transactions`)));
+      } catch {
+        showError(box, "We couldn't load this statement.", show);
+      }
+    }
+
+    $("#filters").addEventListener("submit", (event) => {
+      event.preventDefault();
+      show();
+    });
+    await show();
+  </script>
+</body>
+</html>

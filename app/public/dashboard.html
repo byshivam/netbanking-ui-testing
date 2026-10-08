@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard · Arya Bank NetBanking</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <main>
+    <div class="page-head">
+      <h1 id="greeting">Your accounts</h1>
+      <p class="muted">Balances as of 08 Oct 2026</p>
+    </div>
+    <section aria-labelledby="accounts-title">
+      <h2 id="accounts-title" class="visually-hidden">Accounts</h2>
+      <div id="accounts"><p class="loading" role="status">Loading your accounts…</p></div>
+    </section>
+    <div class="quick" id="quick-actions">
+      <a class="btn primary" href="/transfer">Send money</a>
+      <a class="btn" href="/beneficiaries">Manage beneficiaries</a>
+      <a class="btn" href="/statement">Download statement</a>
+    </div>
+    <section class="card" aria-labelledby="recent-title">
+      <h2 id="recent-title">Recent transactions</h2>
+      <div id="recent"><p class="loading" role="status">Loading…</p></div>
+    </section>
+  </main>
+  <script type="module">
+    import { api, bootstrap, el, inr, longDate, showError, $ } from "/app.js";
+
+    const me = await bootstrap();
+    $("#greeting").textContent = `Welcome, ${me.name.split(" ")[0]}`;
+
+    async function loadAccounts() {
+      const box = $("#accounts");
+      box.replaceChildren(el("p", { class: "loading", role: "status" }, "Loading your accounts…"));
+      try {
+        const { accounts } = await api("/api/accounts");
+        box.replaceChildren(el("div", { class: "accounts" }, accounts.map((a) =>
+          el("article", { class: "card account", "data-account": a.accountNumber, "aria-label": `${a.nickname} ${a.accountNumber}` },
+            el("div", { class: "type" }, a.type),
+            el("div", { class: "nick" }, a.nickname),
+            el("div", { class: "number" }, a.accountNumber),
+            el("div", { class: "muted" }, "Available balance"),
+            el("div", { class: "balance", "data-testid": "balance" }, inr(a.balance))))));
+      } catch {
+        showError(box, "We couldn't load your accounts right now.", loadAccounts);
+      }
+    }
+
+    async function loadRecent() {
+      const box = $("#recent");
+      try {
+        const { transactions } = await api("/api/transactions");
+        const rows = transactions.slice(0, 5);
+        box.replaceChildren(el("div", { class: "table-wrap", tabindex: "0", role: "region", "aria-label": "Recent transactions" }, el("table", {},
+          el("thead", {}, el("tr", {}, el("th", { scope: "col" }, "Date"), el("th", { scope: "col" }, "Description"),
+            el("th", { scope: "col" }, "Account"), el("th", { scope: "col", class: "amt" }, "Amount"))),
+          el("tbody", {}, rows.map((t) => el("tr", { "data-txn": t.id },
+            el("td", {}, longDate(t.date)), el("td", {}, t.description), el("td", {}, t.account),
+            el("td", { class: `amt ${t.direction === "CREDIT" ? "credit" : ""}` },
+              `${t.direction === "CREDIT" ? "+" : "−"}${inr(t.amount)}`)))))));
+      } catch {
+        showError(box, "We couldn't load recent transactions.", loadRecent);
+      }
+    }
+
+    await Promise.all([loadAccounts(), loadRecent()]);
+  </script>
+</body>
+</html>

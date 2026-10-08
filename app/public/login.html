@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in · Arya Bank NetBanking</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="auth">
+    <section class="auth-card card" aria-labelledby="login-title">
+      <div class="brand"><span class="logo" aria-hidden="true">A</span><span><strong>Arya Bank</strong> NetBanking</span></div>
+      <h1 id="login-title">Log in</h1>
+      <p class="muted">A fictional bank built for test automation practice.</p>
+      <p class="demo">Demo login: <strong>AB10001</strong> / <strong>Arya@2026</strong></p>
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="customerId">Customer ID</label>
+          <input id="customerId" name="customerId" autocomplete="username" required autocapitalize="characters" spellcheck="false">
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="pw">
+            <input id="password" name="password" type="password" autocomplete="current-password" required>
+            <button type="button" id="toggle-password" aria-label="Show password" aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <p id="login-error" class="form-error" role="alert" hidden></p>
+        <button type="submit" class="btn primary" id="login-submit">Log in</button>
+      </form>
+    </section>
+  </main>
+  <script type="module">
+    import { api, $ } from "/app.js";
+
+    const form = $("#login-form");
+    const error = $("#login-error");
+    const toggle = $("#toggle-password");
+    const password = $("#password");
+
+    toggle.addEventListener("click", () => {
+      const show = password.type === "password";
+      password.type = show ? "text" : "password";
+      toggle.setAttribute("aria-pressed", String(show));
+      toggle.setAttribute("aria-label", show ? "Hide password" : "Show password");
+    });
+
+    function showError(message) {
+      error.textContent = message;
+      error.hidden = false;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      error.hidden = true;
+      const customerId = $("#customerId").value.trim();
+      if (!customerId || !password.value) {
+        showError("Enter your Customer ID and password.");
+        return;
+      }
+      const submit = $("#login-submit");
+      submit.disabled = true;
+      try {
+        await api("/api/login", { method: "POST", body: { customerId, password: password.value } });
+        const next = new URLSearchParams(location.search).get("next");
+        location.assign(next && next.startsWith("/") ? next : "/dashboard");
+      } catch (err) {
+        if (err.code === "INVALID_CREDENTIALS" && err.body.error.attemptsLeft !== undefined) {
+          const n = err.body.error.attemptsLeft;
+          showError(`${err.message} ${n} attempt${n === 1 ? "" : "s"} left before your login is locked.`);
+        } else {
+          showError(err.message);
+        }
+        submit.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
