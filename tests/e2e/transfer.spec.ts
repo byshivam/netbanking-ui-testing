@@ -69,7 +69,12 @@ test.describe("Send money", { tag: "@e2e" }, () => {
 
   test("double-clicking Confirm sends the money once", async ({ page, transfer }) => {
     await transfer.startReview({ from: SAVINGS, to: "Meera Nair", amount: "999.00" });
-    await transfer.confirm.dblclick();
+    // Two clicks in the same tick, like an impatient double tap. (A real dblclick lets the
+    // second click land on whatever replaced the button, e.g. the "Back to dashboard" link on mobile.)
+    await transfer.confirm.evaluate((button: HTMLButtonElement) => {
+      button.click();
+      button.click();
+    });
     await expect(transfer.success).toBeVisible();
     const res = await page.request.get(`/api/transactions?account=${SAVINGS}&from=2026-10-08&to=2026-10-08`);
     const { transactions } = await res.json();
