@@ -1,6 +1,6 @@
 # Bug hunt
 
-_Last run: 2026-10-26 00:18 UTC_
+_Last run: 2026-10-27 01:37 UTC_
 
 **Clean build:** 325/325 test runs pass across 5 browser projects (chromium, firefox, webkit, mobile-chrome, mobile-safari); 3 skipped by design.  
 **Planted UI bugs caught:** 9/9.  
