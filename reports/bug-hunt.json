@@ -2,7 +2,7 @@
   {
     "run": "clean",
     "exitCode": 0,
-    "durationS": 108.6,
+    "durationS": 144.1,
     "total": 328,
     "passed": 325,
     "skipped": 3,
@@ -22,7 +22,7 @@
   {
     "run": "UI-01",
     "exitCode": 1,
-    "durationS": 118.2,
+    "durationS": 138.2,
     "total": 200,
     "passed": 169,
     "skipped": 1,
@@ -320,7 +320,7 @@
   {
     "run": "UI-02",
     "exitCode": 1,
-    "durationS": 56.6,
+    "durationS": 74.3,
     "total": 200,
     "passed": 196,
     "skipped": 1,
@@ -372,7 +372,7 @@
   {
     "run": "UI-03",
     "exitCode": 1,
-    "durationS": 62.7,
+    "durationS": 82.2,
     "total": 200,
     "passed": 191,
     "skipped": 1,
@@ -470,7 +470,7 @@
   {
     "run": "UI-04",
     "exitCode": 1,
-    "durationS": 56.3,
+    "durationS": 74.8,
     "total": 200,
     "passed": 195,
     "skipped": 1,
@@ -531,7 +531,7 @@
   {
     "run": "UI-05",
     "exitCode": 1,
-    "durationS": 58.5,
+    "durationS": 77.3,
     "total": 200,
     "passed": 190,
     "skipped": 1,
@@ -638,7 +638,7 @@
   {
     "run": "UI-06",
     "exitCode": 1,
-    "durationS": 73.3,
+    "durationS": 92.6,
     "total": 200,
     "passed": 187,
     "skipped": 1,
@@ -772,7 +772,7 @@
   {
     "run": "UI-07",
     "exitCode": 1,
-    "durationS": 71.5,
+    "durationS": 91.6,
     "total": 200,
     "passed": 187,
     "skipped": 1,
@@ -906,7 +906,7 @@
   {
     "run": "UI-08",
     "exitCode": 1,
-    "durationS": 57.2,
+    "durationS": 75.7,
     "total": 200,
     "passed": 196,
     "skipped": 1,
@@ -958,7 +958,7 @@
   {
     "run": "UI-09",
     "exitCode": 1,
-    "durationS": 65.7,
+    "durationS": 86.1,
     "total": 200,
     "passed": 191,
     "skipped": 1,
@@ -1055,7 +1055,7 @@
   {
     "run": "all",
     "exitCode": 1,
-    "durationS": 262.3,
+    "durationS": 306.5,
     "total": 328,
     "passed": 220,
     "skipped": 3,
